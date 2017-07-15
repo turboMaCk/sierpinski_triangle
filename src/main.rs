@@ -12,6 +12,7 @@ pub struct Point {
 
 const WIDTH: u32 = 800;
 const HEIGHT: u32 = 600;
+const CNT: u32 = 1_000_000;
 
 fn main() {
     let mut img = image::ImageBuffer::from_fn(WIDTH, HEIGHT, |x, y| {
@@ -22,7 +23,6 @@ fn main() {
         }
     });
 
-    let cnt: u32 = 1_000_000;
 
     let pts: [Point; 3] = [
         Point { x: WIDTH / 2, y: 0 },
@@ -35,7 +35,7 @@ fn main() {
     let mut p = Point { x: 350, y: 350 };
     let pixel = img[(0,0)];
 
-    for _ in 0..cnt {
+    for _ in 0..CNT {
         num = rand::thread_rng().gen_range(0,3);
         p.x = (p.x + pts[num].x) / 2;
         p.y = (p.y + pts[num].y) / 2;
